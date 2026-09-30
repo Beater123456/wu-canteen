@@ -16,6 +16,7 @@ export default function MenuPage() {
       const { data, error } = await supabase
         .from("categories")
         .select("*, dishes(count)")
+        .eq("dishes.is_active", true)
         .order("sort_order", { ascending: true });
       if (cancelled) return;
       if (error) {

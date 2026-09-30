@@ -34,6 +34,7 @@ chefs ( id, name, initials, avatar_color )
 )
 `)
         .eq("slug", category)
+        .eq("dishes.is_active", true)
         .order("sort_order", { referencedTable: "dishes", ascending: true })
         .single();
       if (cancelled) return;
